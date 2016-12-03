@@ -21,7 +21,7 @@ public:
 */
 
 //O(nlogn+n) AC
-class Solution{
+class SolutionOld{
 public:
 	int maxArea(vector<int>& height) {
 	//1.Sort O(nlogn)
@@ -44,6 +44,23 @@ public:
 	}
 	return max;
 	}
+};
+
+//O(n) from dicuss
+//思路：先找到最宽的容器，想放最多的水，要比最宽的容器高
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+		int i=0,j=height.size()-1,max=0;
+		while(i<j){
+			int curHeight=min(height[i],height[j]);
+			int tmp=(j-i)*curHeight;
+			max=max>tmp?max:tmp;
+			while(curHeight>=height[i]&&i<j) ++i;
+			while(curHeight>=height[j]&&i<j) --j;
+		}
+		return max;
+    }
 };
 
 int main() {
