@@ -8,7 +8,6 @@ class Solution:
                 note[num]+=1
                 if note[num]==2:
                     note.pop(num)
-        print(note.keys())
         return list(note.keys())[0]
 solution=Solution()
 print(solution.singleNumber([2,1,2,2]))
